@@ -27,29 +27,35 @@ environment {
           stage('Init') {
             steps {
               ansiColor('xterm') {
+               withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
                 sh  """
                     ${TERRAFORM_CMD} init -backend=true -input=false
                     """
+              }
               }
             }
           }
           stage('Plan') {
             steps {
 	      ansiColor('xterm') {
+	       withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) { 
                 sh  """
                     ${TERRAFORM_CMD} plan -out=tfplan -input=false
                     """
               }
+             }
             }
           }  
           stage('Apply') {
             steps {
 	      ansiColor('xterm') {
+               withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
                 sh  """
                     ${TERRAFORM_CMD} apply -input=false tfplan
                     """
 	       }
               }
+	   }
           }
 	
           stage('Build the Cluster') {

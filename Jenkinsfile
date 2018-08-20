@@ -16,7 +16,7 @@ environment {
               git url: 'https://github.com/toketunji/kubernetes.git'
             }
           }
-	}
+	
           stage('pull latest light terraform image') {
 	    steps {
                 sh  """
@@ -30,7 +30,6 @@ environment {
                 sh  """
                     ${TERRAFORM_CMD} init -backend=true -input=false
                     """
-               
               }
             }
           }

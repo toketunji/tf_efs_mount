@@ -16,12 +16,12 @@ environment {
               git url: 'https://github.com/toketunji/kubernetes.git'
             }
           }
+	}
           stage('pull latest light terraform image') {
 	    steps {
                 sh  """
                     sudo docker pull hashicorp/terraform:light
                     """
-             
             }
           }
           stage('Init') {
@@ -40,14 +40,12 @@ environment {
                 sh  """
                     ${TERRAFORM_CMD} plan -out=tfplan -input=false
                     """
-		
               }
             }
           }  
           stage('Apply') {
             steps {
 	      ansiColor('xterm') {
-              withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) 
                 sh  """
                     ${TERRAFORM_CMD} apply -input=false tfplan
                     """
@@ -58,12 +56,13 @@ environment {
           stage('Build the Cluster') {
             steps {
 	      ansiColor('xterm') {
-              withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) 
+              withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
                 sh  """
                     bash ./cluster.sh
                     """
 		}                
        	    }
 	}
+        }
 }
 }

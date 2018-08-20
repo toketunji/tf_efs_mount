@@ -18,7 +18,6 @@ environment {
           }
           stage('pull latest light terraform image') {
 	    steps {
- 	      withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin'])
                 sh  """
                     sudo docker pull hashicorp/terraform:light
                     """
@@ -28,7 +27,6 @@ environment {
           stage('Init') {
             steps {
               ansiColor('xterm') {
-               withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin'])
                 sh  """
                     ${TERRAFORM_CMD} init -backend=true -input=false
                     """
@@ -39,7 +37,6 @@ environment {
           stage('Plan') {
             steps {
 	      ansiColor('xterm') {
-              withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin'])
                 sh  """
                     ${TERRAFORM_CMD} plan -out=tfplan -input=false
                     """

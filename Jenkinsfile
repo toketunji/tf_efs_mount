@@ -50,7 +50,7 @@ environment {
           stage('Apply') {
             steps {
 	      ansiColor('xterm') {
-              # withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) 
+              #withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) 
                 sh  """
                     ${TERRAFORM_CMD} apply -input=false tfplan
                     """
@@ -61,7 +61,7 @@ environment {
           stage('Build the Cluster') {
             steps {
 	      ansiColor('xterm') {
-              # withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) 
+              #withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) 
                 sh  """
                     bash ./cluster.sh
                     """

@@ -10,7 +10,7 @@
   
   kops create cluster \
   --node-count 2 \
-  --name kubernetes-cluster.example.com \
+  --name kubernetes.cluster.example.com \
   --zones $ZONES \
   --node-size $NODE_SIZE \
   --master-size $MASTER_SIZE \

@@ -13,7 +13,7 @@ environment {
       	stages {
           stage('checkout repo') {
             steps {
-              git url: 'https://github.com/toketunji/kubernetes.git'
+              git url: 'https://github.com/toketunji/tf_efs_mount.git'
             }
           }
 	

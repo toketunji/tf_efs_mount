@@ -5,7 +5,7 @@
   export NODE_SIZE=${NODE_SIZE:-t2.medium}
   export MASTER_SIZE=${MASTER_SIZE:-t2.medium}
   export ZONES=${ZONES:-"eu-west-1a"}
-  export KOPS_STATE_STORE="s3://teal-garment"
+  export KOPS_STATE_STORE="s3://kube007-clusters"
   export KOPS_FEATURE_FLAGS=AlphaAllowGCE
   
   kops create cluster \
@@ -19,6 +19,6 @@
   --topology private \
   --bastion="true" \
   --yes
-  --state=s3://teal-garment \
+  --state=s3://kube007-clusters \
   --image ubuntu-os-cloud/ubuntu-1604-xenial-v20170202 \
 

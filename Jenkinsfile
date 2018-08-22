@@ -7,7 +7,7 @@ pipeline {
 environment {
     CLUSTERNAME = 'tealorganisation.tk'
     CLUSTERSIZE = 't2.micro'
-    TERRAFORM_CMD = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aws -v /root/.ssh:/root/.ssh -v "${WORKSPACE}/terraform":/app hashicorp/terraform:light'
+    TERRAFORM_CMD = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aws -v /root/.ssh:/root/.ssh -v "${WORKSPACE}":/app hashicorp/terraform:light'
 
     }
       	stages {
